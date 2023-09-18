@@ -3,6 +3,14 @@ require('dotenv').config();
 const { dbConnect } = require('./middlewares/functions');
 
 
+//////////////////////////////// import User and Lesson Models //////////////////////////////////
+
+const UserM = require('./models/user');
+const lessonM = require('./models/lesson');
+
+
+
+
 
 const app = express();
 
@@ -24,6 +32,20 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
     res.render('index', { title: 'Home' });
+});
+
+/////////////////////////////// Test Data Model /////////////////////////////////////////
+
+app.get('/data', async (req, res) => {
+    const data = {email: "ali@gmail.com", password:"سلام", name: {username:"ali", lastName:"Nazari", firstName:"Ali"}, lesson_id: "6508ad2bf7e06607c9edca08"};
+    try {
+        const user = new UserM.User(data);
+        await user.save();
+        console.log(user);
+        res.render('index', { title: 'Home Home' }); 
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 
