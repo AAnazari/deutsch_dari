@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const { dbConnect } = require('./middlewares/functions');
+const userRoute = require('./routes/userRoutes');
 
 
 //////////////////////////////// import User and Lesson Models //////////////////////////////////
@@ -33,6 +34,11 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     res.render('index', { title: 'Home' });
 });
+
+/////////////////////////////// User Route /////////////////////////////////////////
+
+app.use('/users', userRoute);
+
 
 /////////////////////////////// Test Data Model /////////////////////////////////////////
 
