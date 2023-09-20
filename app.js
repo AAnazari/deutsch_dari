@@ -5,7 +5,6 @@ const userRoute = require('./routes/userRoutes');
 
 
 //////////////////////////////// import User and Lesson Models //////////////////////////////////
-
 const UserM = require('./models/user');
 const lessonM = require('./models/lesson');
 
@@ -21,6 +20,10 @@ app.set('view engine', 'ejs');
 //////////////////////////////// Making static / public folder /////////////////////
 app.use(express.static('public'));
 
+///// Adding this 2 lines of code are for POST and PUT requests. Express provides with middleware to deal with incoming data objects in the body of the request.  ////
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 ////////////////////////////// Connect to Database //////////////////////////////////////
 app.use((req, res, next) => {
@@ -30,29 +33,13 @@ app.use((req, res, next) => {
 
 
 /////////////////////////////// Home Page /////////////////////////////////////////
-
 app.get('/', (req, res) => {
     res.render('index', { title: 'Home' });
 });
 
 /////////////////////////////// User Route /////////////////////////////////////////
-
 app.use('/users', userRoute);
 
-
-/////////////////////////////// Test Data Model /////////////////////////////////////////
-
-app.get('/data', async (req, res) => {
-    const data = {email: "ali@gmail.com", password:"سلام", name: {username:"ali", lastName:"Nazari", firstName:"Ali"}, lesson_id: "6508ad2bf7e06607c9edca08"};
-    try {
-        const user = new UserM.User(data);
-        await user.save();
-        console.log(user);
-        res.render('index', { title: 'Home Home' }); 
-    } catch (error) {
-        console.log(error);
-    }
-});
 
 
 ////////////////////////////// Listen to Port //////////////////////////////////////

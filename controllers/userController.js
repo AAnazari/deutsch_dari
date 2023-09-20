@@ -6,9 +6,14 @@ const register_get = (req, res) => {
     res.render('user/register', {title: 'Registration'});
 };
 
+const login_get = (req, res) => {
+    console.log("Login");
+    res.render('user/login', {title: 'Login'});
+};
 
 
 
 module.exports = {
-    register_get
+    register_get,
+    login_get
 };

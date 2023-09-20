@@ -5,10 +5,10 @@ const lessons= require('./lesson');
 
 const userSchema = new mongoose.Schema({
     name: {
-        username: { type: String, required: true},
         lastName: { type: String, required: true},
         firstName: { type: String, required: true}
     },
+    gender: { type: String, required: true},
     password: { type: String, required: true},
     email: { type: String, required: true},
     admin:{ type: Boolean, default: false},
