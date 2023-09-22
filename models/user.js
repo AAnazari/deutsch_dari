@@ -4,10 +4,8 @@ const lessons= require('./lesson');
 //////////////////////////////// Creating of User Schema //////////////////////////////////
 
 const userSchema = new mongoose.Schema({
-    name: {
-        lastName: { type: String, required: true},
-        firstName: { type: String, required: true}
-    },
+    lastname: { type: String, required: true},
+    firstname: { type: String, required: true},
     gender: { type: String, required: true},
     password: { type: String, required: true},
     email: { type: String, required: true},

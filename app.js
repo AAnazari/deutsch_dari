@@ -5,8 +5,8 @@ const userRoute = require('./routes/userRoutes');
 
 
 //////////////////////////////// import User and Lesson Models //////////////////////////////////
-const UserM = require('./models/user');
-const lessonM = require('./models/lesson');
+//const UserM = require('./models/user');
+//const lessonM = require('./models/lesson');
 
 
 
