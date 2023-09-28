@@ -1,0 +1,33 @@
+<%- include('../partials/header.ejs') %>
+<div class="">
+    <form action="/lessons/create" method="post">
+        <div class="container">
+          <h1>Creating A New Lesson</h1>
+          <hr>     
+          
+          <label for="_id"><b>ID</b></label>
+          <input type="text" placeholder="Lesson ID" name="_id" id="_id" required>
+
+          <label for="title"><b>Title</b></label>
+          <input type="text" placeholder="Lesson Title" name="title" id="title" required>
+          
+          <label for="deutsch"><b>Deutsch</b></label>
+          <input type="text" placeholder="Email" name="email" id="email" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Password" name="password" id="psw" required>
+      
+          <label for="psw-repeat"><b>Repeat Password</b></label>
+          <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+          <hr>
+      
+          <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+          <button type="submit" class="registerbtn">Register</button>
+        </div>
+      
+        <div class="container signin">
+          <p>Already have an account? <a href="/users/login">Sign in</a>.</p>
+        </div>
+      </form> 
+</div>
+<%- include('../partials/footer.ejs') %>

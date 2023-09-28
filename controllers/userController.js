@@ -1,10 +1,13 @@
 const userM = require('../models/user');
 
 
+const profile_get = (req, res) => {
+    res.render('users/profile', {title: 'User Profile'});
+};
+
 
 const register_get = (req, res) => {
-    console.log("Register");
-    res.render('user/register', {title: 'Registration'});
+    res.render('users/register', {title: 'Registration'});
 };
 
 const register_post = async (req, res) => {
@@ -18,8 +21,7 @@ const register_post = async (req, res) => {
 };
 
 const login_get = (req, res) => {
-    console.log("Login");
-    res.render('user/login', {title: 'Login'});
+    res.render('users/login', {title: 'Login'});
 };
 
 const login_post = async (req,res) => {
@@ -40,6 +42,7 @@ const login_post = async (req,res) => {
 }
 
 module.exports = {
+    profile_get,
     register_get,
     register_post,
     login_get,

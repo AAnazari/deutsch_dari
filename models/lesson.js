@@ -1,8 +1,10 @@
+const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 
 //////////////////////////////// Creating of Lesson Schema //////////////////////////////////
 
 const lessonSchema = new mongoose.Schema({
+    lessonNo: {type: String, required: true},
     title: { type: String, required: true},
     deutsch:{ type: String, required: true},
     dari: { type: String, required: true},
