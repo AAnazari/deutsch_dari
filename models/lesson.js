@@ -8,11 +8,12 @@ const lessonSchema = new mongoose.Schema({
     title: { type: String, required: true},
     deutsch:{ type: String, required: true},
     dari: { type: String, required: true},
-    quiz: {
-        number: { type: Number , required: true},
-        quizText: { type: String, required: true},
+    quiz: [{
+        qnumber: { type: Number , required: true},
+        question: { type: String, required: true},
+        options: { type: Array, required: true},
         answer: { type: String, required: true}
-    }
+    }]
 }, { timestamps: true });
 
 //////////////////////////////// Creating and exporting of Lesson Model //////////////////////////////////

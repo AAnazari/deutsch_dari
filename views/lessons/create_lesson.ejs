@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs') %>
+<div class="">
+    <form action="/lessons/create" method="post">
+        <div class="container">
+          <h1>Creating A New Lesson</h1>
+          <hr>     
+          
+          <label for="lesson"><b>Lesson Number</b></label>
+          <input type="text" placeholder="Lesson Number " name="lessonNo" id="lessonNo" required>
+
+          <label for="title"><b>Title</b></label>
+          <input type="text" placeholder="Lesson Title" name="title" id="title" required>
+          
+          <label for="deutsch"><b>Deutsch</b></label>
+          <textarea name="deutsch" id="deutsch" rows="10" cols="30">
+          </textarea> 
+      
+          <label for="dari"><b>Dari</b></label>
+          <textarea name="dari" id="dari" rows="10" cols="30">
+          </textarea>       
+          <hr>
+    
+          <button type="submit" class="lesson_create">Create Lesson</button>
+        </div>
+      
+        <div class="container quiz">
+          <p>To create Quiz for the Lesson. <a href="/lessons/create_quiz">Create Quiz</a>.</p>
+        </div>
+      </form> 
+</div>
+<%- include('../partials/footer.ejs') %>
