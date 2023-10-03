@@ -3,7 +3,7 @@
 
 body{
   max-width: 100%;
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 0 20px;
   font-family: 'Noto Serif', serif;
   max-width: 1200px;
@@ -64,8 +64,68 @@ input:focus, select:focus, textarea:focus {
   color: dodgerblue;
 }
 
-/* Overwrite default styles of hr */
+/*   -------------------------- Overwrite default styles of hr -------------------------- */
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
+
+/*   --------------------------  General Tag Styles -------------------------- */
+p, h1, h2, h3, a, ul{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #222;
+}
+
+/*   --------------------------  Navigation-bar Styles -------------------------- */
+nav{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  text-transform: uppercase;
+}
+
+nav ul{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+nav li{
+  list-style-type: none;
+  margin-left: 20px;
+}
+nav li a:hover{
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #04AA6D;
+}
+nav h1{
+  font-size: 3em;
+}
+nav p, nav a{
+  color: #777;
+  font-weight: 300;
+}
+
+/*   --------------------------  Content Styles -------------------------- */
+.content{
+  margin-left: 20px;
+}
+.content h2{
+  margin-bottom: 40px;
+}
+.content h3{
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
+
+/*   --------------------------  Footer Styles -------------------------- */
+footer{
+  color: #777;
+  text-align: center;
+  margin: 80px auto 20px;
+}
+
