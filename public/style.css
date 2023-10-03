@@ -1,53 +1,39 @@
-h1 {
+
+/*   -------------------------- Form Content Styles -------------------------- */
+
+body{
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 0 20px;
+  font-family: 'Noto Serif', serif;
+  max-width: 1200px;
 }
 
-h2 {
-    color: blue;
-}
-
-p {
-    color: brown;
-}
-
-
-* {box-sizing: border-box}
+/*   -------------------------- Form Content Styles -------------------------- */
 
 .container {
   padding: 16px;
 }
 
-/* input fields */
-input[type=text], input[type=password] {
+.form_content form{
+  max-width: 50%;
+  margin: 0 auto;
+}
+.form_content input, .form_content textarea, .form_content select[name="gender"]{
+  display: block;
   width: 100%;
-  padding: 15px;
-  margin: 5px 0% 22px 0%;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
+  margin: 10px 0;
+  padding: 8px;
 }
-
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
+.form_content label{
+  display: block;
+  margin-top: 24px;
 }
-
-select[name="gender"] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0% 22px 0%;
-    display: inline-block;
-    border: none;
+.form_content textarea{
+  height: 140px;
 }
-
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* Set a style for the submit/register button */
-.registerbtn {
+.form_content button{
+  font-size: 1.2em;
   background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
@@ -57,18 +43,29 @@ hr {
   width: 100%;
   opacity: 0.9;
 }
-
-.registerbtn:hover {
+.form_content button:hover {
   opacity:1;
 }
 
-/* Add a blue text color to links */
-a {
+.quiz, .signin {
+  background-color: #f1f1f1;
+  text-align: center;
+  margin: 8px 3%;
+  border: none;
+  width: 94%;
+  padding: 16px 20px;
+}
+
+input:focus, select:focus, textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.quiz a, .signin a {
   color: dodgerblue;
 }
 
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
 }
