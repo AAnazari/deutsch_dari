@@ -1,6 +1,16 @@
 <%- include('../partials/header.ejs') %>
 <div class="lesson content">
     <h2> Lessons</h2>
-    <p>You can view all lessons hereeeeeeeeeeeeeee. </p>
+    <% if (lessons.length > 0) { %>
+        <% lessons.forEach(lesson => { %>
+            <a class="single" href="/lessons/<%= lesson._id %>">
+                <h3 class="title"><%= lesson.title %></h3>
+                <p class="deutsch"><%= lesson.deutsch %></p>
+                <p class="farsi"><%= lesson.dari %></p>
+            </a>
+        <% }) %>
+    <% } else { %>
+        <p>There is no lesson to display. </p>
+    <% } %>
 </div>
 <%- include('../partials/footer.ejs') %>
