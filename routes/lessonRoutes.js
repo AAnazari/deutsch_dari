@@ -14,11 +14,10 @@ lessonRouter.get('/create_quiz', lessonController.create_quiz_get);
 lessonRouter.post('/create_quiz', lessonController.create_quiz_post);
 
 ///////////////////////////////////// Access a lesson get route //////////////////////////////////
-
-lessonRouter.get('/', lessonController.lessons_get);
+lessonRouter.get('/:id', lessonController.a_lesson_get);
 
 ///////////////////////////////////// Access a quiz get route //////////////////////////////////
-
+lessonRouter.get('/quiz/:lessonNo', lessonController.quiz_get);
 
 
 module.exports = lessonRouter;

@@ -1,0 +1,12 @@
+<%- include('../partials/header.ejs') %>
+<div class="lesson content">
+    <h2> Lesson <%= lesson.lessonNo %></h2>
+    <div class="content">
+        <h3 class="title"><%= lesson.title %></h3>
+        <p class="deutsch"><%= lesson.deutsch %></p>
+        <p class="farsi"><%= lesson.dari %></p>
+    </div>
+    <br /> <br /> <br /> <br /> <br /> <br />
+    <a class="quiz" href="/lessons/quiz/<%= lesson.lessonNo %>">Quiz</a>
+</div>
+<%- include('../partials/footer.ejs') %>

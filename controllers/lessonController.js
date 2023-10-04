@@ -1,12 +1,26 @@
 const lessonM = require('../models/lesson');
 
+///////////////////////////////////// Lessons Controllers //////////////////////////////////
+
 const lessons_get = async (req, res) => {
     try {
-        res.render('lessons/lesson', {title : 'All lessons'});
+        const lessons = await lessonM.Lesson.find(); 
+        res.render('lessons/lesson', {title : 'All lessons', lessons: lessons});
     } catch (error) {
         console.log(error);
     }
 };
+
+const a_lesson_get = async (req, res) => {
+    try {
+        const lesson = await lessonM.Lesson.findById(req.params.id); 
+        res.render('lessons/details', {title : 'A Lesson', lesson: lesson});
+        
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 
 const create_lesson_get = (req, res) => {
         res.render('lessons/create_lesson', {title : 'Create a new lesson'});
@@ -19,6 +33,19 @@ const create_lesson_post = async (req, res) => {
         await lesson.save();
         res.redirect("/lessons/create_quiz");
         //lesson.save();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+///////////////////////////////////// Quiz Controllers //////////////////////////////////
+
+const quiz_get = async (req, res) => {
+    try {
+        const lesson = await lessonM.Lesson.findOne({lessonNo: req.params.lessonNo});
+        const quizes = lesson.quiz;
+        console.log(quizes);
+        res.render('lessons/quiz', {title : 'Quizes', lessonNo: req.params.lessonNo, quizes: quizes});
     } catch (error) {
         console.log(error);
     }
@@ -39,8 +66,10 @@ const create_quiz_post = async (req, res) => {
 
 module.exports = {
     lessons_get,
+    a_lesson_get,
     create_lesson_get,
     create_lesson_post,
+    quiz_get,
     create_quiz_get,
     create_quiz_post
 };
