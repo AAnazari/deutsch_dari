@@ -1,7 +1,7 @@
-//////////////////////// Connect to MongoDB //////////////////////////
-
 const mongoose = require("mongoose");
 
+
+//////////////////////// Connect to MongoDB //////////////////////////
 async function dbConnect(dbURI, dbName){
     try{
         await mongoose.connect(dbURI);
@@ -13,7 +13,6 @@ async function dbConnect(dbURI, dbName){
 
 
 
-
 module.exports = {
-    dbConnect: dbConnect
+    dbConnect: dbConnect,
 }
