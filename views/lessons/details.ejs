@@ -2,9 +2,9 @@
 <div class="lesson content">
     <h2> Lesson <%= lesson.lessonNo %></h2>
     <div class="content">
-        <h3 class="title"><%= lesson.title %></h3>
-        <p class="deutsch"><%= lesson.deutsch %></p>
-        <p class="farsi"><%= lesson.dari %></p>
+        <h3 class="title">Title: <%= lesson.title %></h3>
+        <p class="deutsch"> Deutsch: <%= lesson.deutsch %></p>
+        <p class="dari"> Dari: <%= lesson.dari %></p>
     </div>
     <br /> <br /> <br /> <br /> <br /> <br />
     <a class="quiz" href="/lessons/quiz/<%= lesson.lessonNo %>">Quiz</a>
