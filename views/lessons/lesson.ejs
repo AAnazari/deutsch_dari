@@ -4,9 +4,8 @@
     <% if (lessons.length > 0) { %>
         <% lessons.forEach(lesson => { %>
             <a class="single" href="/lessons/<%= lesson._id %>">
-                <h3 class="title"><%= lesson.title %></h3>
-                <p class="deutsch"><%= lesson.deutsch %></p>
-                <p class="farsi"><%= lesson.dari %></p>
+                <h3 class="title">Lesson <%= lesson.lessonNo %></h3>
+                <p class="deutsch"><%= lesson.title %></p>
             </a>
         <% }) %>
     <% } else { %>

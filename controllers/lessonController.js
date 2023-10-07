@@ -44,7 +44,9 @@ const quiz_get = async (req, res) => {
     try {
         const lesson = await lessonM.Lesson.findOne({lessonNo: req.params.lessonNo});
         const quizes = lesson.quiz;
-        console.log(quizes);
+        quizes.sort(function(a,b) {
+            return a.qnumber - b.qnumber;
+        });
         res.render('lessons/quiz', {title : 'Quizes', lessonNo: req.params.lessonNo, quizes: quizes});
     } catch (error) {
         console.log(error);
