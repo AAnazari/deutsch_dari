@@ -29,7 +29,7 @@ const login_post = async (req,res) => {
         const email = req.body.email;
         const user = await userM.User.findOne({email: email});
         if (user && user.password === req.body.password) {
-            console.log("Loging was successfully");
+            req.flash('success', 'Loging was successfully');
             res.redirect("/");
         }else{
             console.log("Login failed");
