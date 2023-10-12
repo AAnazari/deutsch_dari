@@ -12,7 +12,7 @@ const register_get = (req, res) => {
 
 const register_post = async (req, res) => {
     try {
-        const user = new userM.User(req.body);
+        const user = new userM.User(req.body);        
         await user.save();
         res.redirect('/users/login');
     } catch (error) {
