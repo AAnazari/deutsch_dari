@@ -1,4 +1,6 @@
 const userM = require('../models/user');
+const { reg_validator } = require('../middlewares/functions');
+const bcrypt = require('bcrypt');
 
 
 const profile_get = (req, res) => {
@@ -12,11 +14,27 @@ const register_get = (req, res) => {
 
 const register_post = async (req, res) => {
     try {
-        const user = new userM.User(req.body);        
-        await user.save();
-        res.redirect('/users/login');
+
+        //////////////////////////////// Checking for existing Email Address //////////////////////////////////
+        const oldUser = await userM.User.findOne({email: req.body.email});
+        if(oldUser) {
+            req.flash('error', 'User already exists');
+            res.redirect('/users/login');
+        }
+
+        //////////////////////////////// Form Validation using JOI //////////////////////////////////
+        const {error, value} = reg_validator(req.body);
+        if(!error){
+            //////////////////////////////// If there is no Error, Register the User //////////////////////////////////
+            const user = new userM.User(value);        
+            await user.save();
+            res.redirect('/users/login');
+        }else{
+            req.flash('error', error.message);
+            res.redirect('/users/register');
+        }
     } catch (error) {
-        console.log("Error: " + error);
+        req.flash('error', error.message);
     }
 };
 
@@ -26,17 +44,25 @@ const login_get = (req, res) => {
 
 const login_post = async (req,res) => {
     try {
+        //////////////////////////////// Checking if the User exists in the System //////////////////////////////////
         const email = req.body.email;
         const user = await userM.User.findOne({email: email});
-        if (user && user.password === req.body.password) {
-            console.log("Loging was successfully");
-            res.redirect("/");
+        if (user){
+            //////////////////////////////// Compare the Password entered by User and Password in the database //////////////////////////////////
+           // if(user.password === req.body.password) {
+            if(await bcrypt.compare(req.body.password, user.password)){
+                req.flash('success', 'Loging was successfully');
+                res.redirect("/");
+            }else{
+                req.flash('pass_failed',"The Password is not correct");
+                res.redirect("/users/login");
+            }
         }else{
-            console.log("Login failed");
+            req.flash('email_failed',"The '"+ req.body.email + "' is not registered as an EMail address");
             res.redirect("/users/login");
         }
     } catch (error) {
-        console.log("Error: " + error);
+        req.flash('error', error.message);
     }
 
 }

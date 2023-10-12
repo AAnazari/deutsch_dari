@@ -4,6 +4,7 @@ const { dbConnect } = require('./middlewares/functions');
 const userRoute = require('./routes/userRoutes');
 const lessonRoute = require('./routes/lessonRoutes');
 const session = require('express-session');
+const connectFlash = require('connect-flash');
 
 
 
@@ -35,13 +36,14 @@ app.use(session({
     }  
 }));
 
+////////////////////////////// Initializing Connect-Flash //////////////////////////////////////
+app.use(connectFlash());
 
-////////////////////////////// Connect to Database //////////////////////////////////////
-/*app.use((req, res, next) => {
-    dbConnect(process.env.MONGODB_URI);
+////////////////////////////// Middleware of Connect-Flash Messages //////////////////////////////////////
+app.use((req, res, next) => {
+    res.locals.messages = req.flash();
     next();
 });
-*/
 
 /////////////////////////////// Home Page /////////////////////////////////////////
 app.get('/', (req, res) => {
