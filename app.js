@@ -3,12 +3,7 @@ require('dotenv').config();
 const { dbConnect } = require('./middlewares/functions');
 const userRoute = require('./routes/userRoutes');
 const lessonRoute = require('./routes/lessonRoutes');
-
-
-
-//////////////////////////////// import User and Lesson Models //////////////////////////////////
-//const UserM = require('./models/user');
-//const lessonM = require('./models/lesson');
+const session = require('express-session');
 
 
 
@@ -25,6 +20,20 @@ app.use(express.static('public'));
 ///// Adding this 2 lines of code are for POST and PUT requests. Express provides with middleware to deal with incoming data objects in the body of the request.  ////
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
+//////////////////////////////// Making Session //////////////////////////////////
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { 
+       // secure: true, 
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60   
+        ////////////////////////////////// Cookie is setted for one Hour //////////////////////
+    }  
+}));
 
 
 ////////////////////////////// Connect to Database //////////////////////////////////////
