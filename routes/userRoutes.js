@@ -2,7 +2,6 @@ const express = require('express');
 const userController = require('../controllers/userController');
 const userRoute = express.Router();
 
-
 ///////////////////////////////////// Profile get route //////////////////////////////////
 userRoute.get('/', userController.profile_get);
 
