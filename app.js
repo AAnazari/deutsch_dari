@@ -5,6 +5,7 @@ const userRoute = require('./routes/userRoutes');
 const lessonRoute = require('./routes/lessonRoutes');
 const session = require('express-session');
 const connectFlash = require('connect-flash');
+const passport = require('passport');
 
 
 
@@ -22,7 +23,6 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 //////////////////////////////// Making Session //////////////////////////////////
 app.use(session({
     secret: process.env.SECRET,
@@ -35,6 +35,11 @@ app.use(session({
         ////////////////////////////////// Cookie is setted for one Hour //////////////////////
     }  
 }));
+
+//////////////////////////////// Passport Initialization //////////////////////////////////
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.authenticate('session'));
 
 ////////////////////////////// Initializing Connect-Flash //////////////////////////////////////
 app.use(connectFlash());
