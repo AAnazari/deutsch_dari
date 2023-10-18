@@ -30,5 +30,15 @@ userSchema.pre('save', async function (next){
     }
 });
 
+//////////////////////////////// Compare the Password entered by User and Password in the database //////////////////////////////////
+userSchema.methods.isValidPassword = async function (password) {
+    try {
+      return await bcrypt.compare(password, this.password);
+    } catch (error) {
+      throw createHttpError.InternalServerError("This is an Error: " + error.message);
+    }
+};
+
+
 //////////////////////////////// Creating and exporting of User Model //////////////////////////////////
 module.exports.User = mongoose.model('users', userSchema);

@@ -1,6 +1,9 @@
 const userM = require('../models/user');
 const { reg_validator } = require('../middlewares/functions');
 const bcrypt = require('bcrypt');
+const passport = require('passport');
+require('../utils/auth');
+
 
 
 const profile_get = (req, res) => {
@@ -14,7 +17,6 @@ const register_get = (req, res) => {
 
 const register_post = async (req, res) => {
     try {
-
         //////////////////////////////// Checking for existing Email Address //////////////////////////////////
         const oldUser = await userM.User.findOne({email: req.body.email});
         if(oldUser) {
@@ -42,14 +44,30 @@ const login_get = (req, res) => {
     res.render('users/login', {title: 'Login'});
 };
 
-const login_post = async (req,res) => {
+const login_post = (req,res) => {
+    const { email, password } = req.body;
+    //Required
+    if (!email || !password) {
+      req.flash('error', 'Email and password are required');
+      res.render("users/login", {
+        email,
+        password,
+      });
+    } else {
+      passport.authenticate("local", {
+        successReturnToOrRedirect: "/", 
+        successFlash: true,
+        failureRedirect: "/users/login",
+        failureFlash: true,
+      })(req, res);
+    }
+/*/////////////////////// Befor the Passport Local Strategy //////////////////////////
     try {
         //////////////////////////////// Checking if the User exists in the System //////////////////////////////////
         const email = req.body.email;
         const user = await userM.User.findOne({email: email});
         if (user){
             //////////////////////////////// Compare the Password entered by User and Password in the database //////////////////////////////////
-           // if(user.password === req.body.password) {
             if(await bcrypt.compare(req.body.password, user.password)){
                 req.flash('success', 'Loging was successfully');
                 res.redirect("/");
@@ -64,8 +82,8 @@ const login_post = async (req,res) => {
     } catch (error) {
         req.flash('error', error.message);
     }
-
-}
+/////////////////////////*/
+};
 
 module.exports = {
     profile_get,
