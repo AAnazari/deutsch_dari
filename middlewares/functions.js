@@ -47,11 +47,31 @@ const reg_validator = (schema) => (payload) =>
     schema.validate(payload, { abortEarly: false });
 
 
+////////////////////////  Protect Routes using Passport JS //////////////////////////
+////////////////////////  Routes after login //////////////////////////
+function ensureAuthenticated(req, res, next) {
+    if(req.isAuthenticated()) {
+        next();
+    }else{
+        res.redirect("/users/login");
+    }
+}
+
+////////////////////////  Routes before login or after logout /////////
+function ensureNotAuthenticated(req, res, next) {
+    if(req.isAuthenticated()) {
+        res.redirect("back");
+    }else{
+        next();
+    }
+}
 
 
 
 
 module.exports = {
     dbConnect: dbConnect,
-    reg_validator: reg_validator(registerSchema)
+    reg_validator: reg_validator(registerSchema),
+    ensureAuthenticated: ensureAuthenticated,
+    ensureNotAuthenticated: ensureNotAuthenticated
 }
