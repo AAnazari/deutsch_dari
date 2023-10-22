@@ -14,5 +14,7 @@ userRoute.post('/register', userController.register_post);
 userRoute.get('/login', userController.login_get);
 userRoute.post('/login', userController.login_post);
 
+///////////////////////////////////// Logout get and post routes //////////////////////////////////
+userRoute.get('/logout', userController.logout);
 
 module.exports = userRoute;
