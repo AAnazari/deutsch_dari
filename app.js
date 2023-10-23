@@ -41,6 +41,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.authenticate('session'));
 
+//////////////////////////////// Rendering the User for Dynamic Navbar (Navbar Management) //////////////////////////////////
+
+app.use((req, res, next) => {
+    res.locals.user = req.user;
+    next();
+});
+
 ////////////////////////////// Initializing Connect-Flash //////////////////////////////////////
 app.use(connectFlash());
 
