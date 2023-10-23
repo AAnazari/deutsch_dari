@@ -85,10 +85,21 @@ const login_post = (req,res) => {
 /////////////////////////*/
 };
 
+const logout = (req, res, next) => {
+    req.logout(function(err) {
+        if (err) { 
+            req.flash('error', err.message);
+            return next(err); 
+        }
+        req.flash('success', 'You have been logged out successfully');
+        res.redirect('/users/login');
+      });
+};
 module.exports = {
     profile_get,
     register_get,
     register_post,
     login_get,
-    login_post
+    login_post,
+    logout
 };

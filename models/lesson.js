@@ -1,5 +1,6 @@
 const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
+const {ensureAuthenticated, ensureNotAuthenticated} = require('../middlewares/functions');
 
 //////////////////////////////// Creating of Lesson Schema //////////////////////////////////
 
