@@ -66,12 +66,24 @@ function ensureNotAuthenticated(req, res, next) {
     }
 }
 
+//////////////////////// function to check user role //////////////
 
+function checkRole(req, res, next) {
+    if (req.user.admin) {
+        next();
+    } else {
+        req.flash('error', 'You are not allowed to access this page.');
+        res.redirect("back");
+    }
+}
+  
+  
 
 
 module.exports = {
     dbConnect: dbConnect,
     reg_validator: reg_validator(registerSchema),
     ensureAuthenticated: ensureAuthenticated,
-    ensureNotAuthenticated: ensureNotAuthenticated
+    ensureNotAuthenticated: ensureNotAuthenticated,
+    checkRole: checkRole
 }
