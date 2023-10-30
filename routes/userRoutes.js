@@ -4,7 +4,7 @@ const userRoute = express.Router();
 const {ensureAuthenticated, ensureNotAuthenticated} = require('../middlewares/functions');
 
 ///////////////////////////////////// Profile get route //////////////////////////////////
-userRoute.get('/', userController.profile_get);
+userRoute.get('/',ensureAuthenticated, userController.profile_get);
 
 ///////////////////////////////////// Register get and post routes //////////////////////////////////
 userRoute.get('/register',ensureNotAuthenticated, userController.register_get);
