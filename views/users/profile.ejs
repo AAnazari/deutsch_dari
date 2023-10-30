@@ -1,6 +1,10 @@
 <%- include('../partials/header.ejs') %>
 <div class="lesson content">
-    <h2> User Profile</h2>
-    <p>Welcome to the User Profile </p>
+    <h2>  User Profile</h2>
+    <p>Full Name: <%= user.firstname + ', ' + user.lastname %></p>
+    <p>Email Address: <%= user.email %></p>
+    <p>Gender: <%= user.gender %></p>
+    <p>Lesson: <%= user.lesson_id %></p>
+
 </div>
 <%- include('../partials/footer.ejs') %>
