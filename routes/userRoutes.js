@@ -6,6 +6,12 @@ const {ensureAuthenticated, ensureNotAuthenticated} = require('../middlewares/fu
 ///////////////////////////////////// Profile get route //////////////////////////////////
 userRoute.get('/',ensureAuthenticated, userController.profile_get);
 
+///////////////////////////////////// Edit-Profile get route //////////////////////////////////
+userRoute.get('/editProfile',ensureAuthenticated, userController.editProfile_get);
+
+///////////////////////////////////// Edit-Profile Post route //////////////////////////////////
+userRoute.post('/editProfile',ensureAuthenticated, userController.editProfile_post);
+
 ///////////////////////////////////// Register get and post routes //////////////////////////////////
 userRoute.get('/register',ensureNotAuthenticated, userController.register_get);
 userRoute.post('/register', userController.register_post);

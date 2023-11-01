@@ -10,6 +10,21 @@ const profile_get = (req, res) => {
     res.render('users/profile', {title: 'User Profile'});
 };
 
+const editProfile_get = (req, res) => {
+    res.render('users/editProfile', {title: 'Edit Profile'});
+};
+
+const editProfile_post = async (req, res) => {
+    try {
+        //////////////////////////////// Checking for existing Email Address //////////////////////////////////
+        await userM.User.findOneAndUpdate({ _id: req.user._id }, { $set: req.body }, { new: false });
+        req.flash('info', 'Profile updated successfully');
+        res.redirect('/users/');
+    } catch (error) {
+        req.flash('error', error.message);
+    }
+};
+
 
 const register_get = (req, res) => {
     res.render('users/register', {title: 'Registration'});
@@ -97,6 +112,8 @@ const logout = (req, res, next) => {
 };
 module.exports = {
     profile_get,
+    editProfile_get,
+    editProfile_post,
     register_get,
     register_post,
     login_get,
