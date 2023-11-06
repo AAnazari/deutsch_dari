@@ -1,6 +1,5 @@
 const userM = require('../models/user');
-const { reg_validator } = require('../middlewares/functions');
-const bcrypt = require('bcrypt');
+const { reg_validator, updatePassValidator } = require('../middlewares/functions');
 const passport = require('passport');
 require('../utils/auth');
 
@@ -8,6 +7,49 @@ require('../utils/auth');
 
 const profile_get = (req, res) => {
     res.render('users/profile', {title: 'User Profile'});
+};
+
+const editProfile_get = (req, res) => {
+    res.render('users/setting/account', {title: 'Edit Profile'});
+};
+
+const editProfile_post = async (req, res) => {
+    try {
+        //////////////////////////////// Checking for existing Email Address //////////////////////////////////
+        await userM.User.findOneAndUpdate({ _id: req.user._id }, { $set: req.body }, { new: false });
+        req.flash('info', 'Profile updated successfully');
+        res.redirect('/users/profile');
+    } catch (error) {
+        req.flash('error', error.message);
+    }
+};
+
+const updatePassGet = (req, res) => {
+    res.render('users/setting/reset', {title: 'Change Password'});
+};
+const updatePassPost = async (req, res) => {
+    try {
+        const {error, value} = updatePassValidator(req.body);
+        const currentUser = await userM.User.findOne({email: req.user.email});
+        if(!error) {
+            const isMatch = await currentUser.isValidPassword(value.oldPassword);
+            if(isMatch){
+                currentUser.password = value.password;
+                await currentUser.save();
+                req.flash('info', 'Password is changed successfully');
+                res.redirect('/users/profile');
+            }else{
+                req.flash('errer', "Invalid old password");
+                res.redirect('/users/setting/reset');
+            } 
+        }else{
+            req.flash('error', error.message);
+            res.redirect('/users/setting/reset');
+        }
+    } catch (error) {
+        req.flash('error', error.message);
+    }
+    
 };
 
 
@@ -97,6 +139,10 @@ const logout = (req, res, next) => {
 };
 module.exports = {
     profile_get,
+    editProfile_get,
+    editProfile_post,
+    updatePassGet,
+    updatePassPost,
     register_get,
     register_post,
     login_get,

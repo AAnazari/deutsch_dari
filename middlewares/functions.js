@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
+const bcrypt = require('bcrypt');
+require('dotenv').config();
 
 
 //////////////////////// Connect to MongoDB //////////////////////////
@@ -47,6 +49,27 @@ const reg_validator = (schema) => (payload) =>
     schema.validate(payload, { abortEarly: false });
 
 
+
+////////////////////////  Creating JOI Update Password Schema //////////////////////////
+const updatePasswordSchema = Joi.object({
+    oldPassword: Joi.string(),
+    password: Joi.string()
+        .min(8)
+        .max(20)
+        //.regex(/^[a-zA-Z0-9]{3,30}$/),
+        .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
+
+    repeat_password: Joi.ref('password'),
+
+    access_token: [
+        Joi.string(),
+        Joi.number()
+    ]
+});
+
+const updatePassValidator = (schema) => (payload) => 
+    schema.validate(payload, { abortEarly: false });
+
 ////////////////////////  Protect Routes using Passport JS //////////////////////////
 ////////////////////////  Routes after login //////////////////////////
 function ensureAuthenticated(req, res, next) {
@@ -77,13 +100,12 @@ function checkRole(req, res, next) {
     }
 }
   
-  
-
 
 module.exports = {
-    dbConnect: dbConnect,
+    dbConnect,
     reg_validator: reg_validator(registerSchema),
+    updatePassValidator: updatePassValidator(updatePasswordSchema),
     ensureAuthenticated: ensureAuthenticated,
     ensureNotAuthenticated: ensureNotAuthenticated,
-    checkRole: checkRole
+    checkRole
 }
