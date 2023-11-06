@@ -23,12 +23,17 @@ userSchema.pre('save', async function (next){
             const salt = await bcrypt.genSalt(+process.env.SALT);
             const hashedPassword = await bcrypt.hash(this.password, salt);
             this.password = hashedPassword;
-          }
-          next();      
+        } else if (this.isModified('password')) {
+            const salt = await bcrypt.genSalt(+process.env.SALT);
+            const hashedPassword = await bcrypt.hash(this.password, salt);
+            this.password = hashedPassword;
+        }
+        next();      
     } catch (error) {
         next(error);
     }
 });
+
 
 //////////////////////////////// Compare the Password entered by User and Password in the database //////////////////////////////////
 userSchema.methods.isValidPassword = async function (password) {
