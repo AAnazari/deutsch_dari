@@ -1,24 +1,27 @@
 <%- include('../partials/header.ejs') %>
 <div class="lesson content">
-    <h2 class="question"> Lesson <%= lessonNo %> Quizes</h2>
-    <hr />
-    <% if (quizes.length > 0) { %>
-        <% quizes.forEach(quiz => { %>
-            <p class="question">Q. <%= quiz.qnumber %></p>
-            <p class="question">Question: <%= quiz.question %></p>
-            <label for="answers"><b>Answer: </b></label>
-            <select class="question" id="option">
-                <option value="a"> <%= quiz.options[0] %> </option>
-                <option value="b"> <%= quiz.options[1] %></option>
-                <option value="c"> <%= quiz.options[2] %> </option>
-                <option value="d"> <%= quiz.options[3] %></option>
-            </select>
-            <span id="answer"></span>
-            <button type="submit">Answer</button>
-            <hr />
-        <% }) %>
-    <% } else { %>
-        <p>There is no Quiz to display. </p>
-    <% } %>
+    <form action="/lessons/quiz/<%= lessonNo %>" method="post">
+        <h2 class="question"> Lesson <%= lessonNo %> Quizes</h2>
+        <hr />
+        <% if (quizes.length > 0) { %>
+            <% quizes.forEach(quiz => { %>
+                
+                <p class="question">Q. <%= quiz.qnumber %></p>
+                <p class="question">Question: <%= quiz.question %></p>
+                <label for="answers"><b>Answer: </b></label>
+                <select class="question" id="option" name="answer">
+                    <option value="<%= quiz.options[0] %>"> <%= quiz.options[0] %> </option>
+                    <option value="<%= quiz.options[1] %>"> <%= quiz.options[1] %></option>
+                    <option value="<%= quiz.options[2] %>"> <%= quiz.options[2] %> </option>
+                    <option value="<%= quiz.options[3] %>"> <%= quiz.options[3] %></option>
+                </select>
+                
+                <hr />
+            <% }) %>
+            <button type="submit">Check</button>
+        <% } else { %>
+            <p>There is no Quiz to display. </p>
+        <% } %>
+    </form>
 </div>
 <%- include('../partials/footer.ejs') %>

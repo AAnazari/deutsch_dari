@@ -20,6 +20,7 @@ lessonRouter.get('/:id', ensureAuthenticated, lessonController.a_lesson_get);
 
 ///////////////////////////////////// Access a quiz get route //////////////////////////////////
 lessonRouter.get('/quiz/:lessonNo', ensureAuthenticated, lessonController.quiz_get);
+lessonRouter.post('/quiz/:lessonNo', ensureAuthenticated, lessonController.quizPost);
 
 
 module.exports = lessonRouter;

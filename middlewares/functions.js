@@ -100,6 +100,13 @@ function checkRole(req, res, next) {
     }
 }
   
+//////////////////////// function to change String to number, then increase it by one, and finally change back to string //////////////
+
+function increaseLessonNo(lessonNo) {
+    const newLessonNo = Number(lessonNo) + 1;
+    return String(newLessonNo);
+}
+  
 
 module.exports = {
     dbConnect,
@@ -107,5 +114,6 @@ module.exports = {
     updatePassValidator: updatePassValidator(updatePasswordSchema),
     ensureAuthenticated: ensureAuthenticated,
     ensureNotAuthenticated: ensureNotAuthenticated,
-    checkRole
+    checkRole,
+    increaseLessonNo
 }
