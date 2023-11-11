@@ -1,4 +1,6 @@
 const lessonM = require('../models/lesson');
+const userM = require('../models/user');
+
 
 ///////////////////////////////////// Lessons Controllers //////////////////////////////////
 
@@ -14,7 +16,14 @@ const lessons_get = async (req, res) => {
 const a_lesson_get = async (req, res) => {
     try {
         const lesson = await lessonM.Lesson.findById(req.params.id); 
-        res.render('lessons/details', {title : 'A Lesson', lesson: lesson});
+        const userLesson = req.user.lesson_id;
+        if(userLesson.indexOf(lesson.id) !== -1 || lesson.lessonNo === "1") {
+            res.render('lessons/details', {title : 'A Lesson', lesson: lesson});
+        }else{
+            req.flash("warning", "You should learn step by step");
+            res.redirect("/lessons");
+        }
+        
         
     } catch (error) {
         console.log(error);
