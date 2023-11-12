@@ -72,7 +72,6 @@ const quizPost = async (req, res) => {
 
         ////////////////////////////////find all quizes of a given lesson /////////////////////////
         const quizes = lesson.quiz;
-
         ////////////////////////////////sort quizes /////////////////////////
         quizes.sort(function(a,b) {
             return a.qnumber - b.qnumber;
@@ -80,7 +79,9 @@ const quizPost = async (req, res) => {
 
         ////////////////////////////////compare quizes with user answers/////////////////////////
         for(let i = 0; i < quizes.length; i++){
-            if(quizes[i].answer === userAnswer[i]){
+            if(typeof userAnswer == "string" && quizes[i].answer === userAnswer){
+                correctAnswer += 1;
+            }else if(quizes[i].answer === userAnswer[i] ){
                 correctAnswer += 1;
             }
         }
@@ -92,12 +93,16 @@ const quizPost = async (req, res) => {
             const email = req.user.email;
             //////////////////////////////// increaseLessonNo is a function that returns the Next Lesson Number //////////////////
             const nextLesson = await lessonM.Lesson.findOne({lessonNo: increaseLessonNo(lessonNo)});
-            const user = await userM.User.findOne({email});
-            if(user.lesson_id.indexOf(nextLesson.id) === -1){
-                await userM.User.updateOne({email}, {$push: {lesson_id: nextLesson.id}});
+            if (nextLesson){
+                const user = await userM.User.findOne({email});
+                if(user.lesson_id.indexOf(nextLesson.id) === -1){
+                    await userM.User.updateOne({email}, {$push: {lesson_id: nextLesson.id}});
+                }
+                req.flash('info', 'You have successfully finished the Lesson');
+                req.flash('info', 'You can now start the next Lesson');
+            } else {
+                req.flash('info', 'You have successfully finished All the Lessons');
             }
-            req.flash('info', 'You have successfully finished the Lesson');
-            req.flash('info', 'You can now start the next Lesson');
             res.redirect('/lessons');
         }else {
             req.flash('Warning', 'You should learn more, and try again later');
