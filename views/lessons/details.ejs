@@ -1,5 +1,5 @@
 <%- include('../partials/header.ejs') %>
-<div class="lesson content">
+<main>
     <h2> Lesson <%= lesson.lessonNo %></h2>
     <div class="content">
         <h3 class="title">Title: <%= lesson.title %></h3>
@@ -8,5 +8,5 @@
     </div>
     <br /> <br /> <br /> <br /> <br /> <br />
     <a class="quiz" href="/lessons/quiz/<%= lesson.lessonNo %>">Quiz</a>
-</div>
+</main>
 <%- include('../partials/footer.ejs') %>
