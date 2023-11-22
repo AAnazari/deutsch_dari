@@ -4,14 +4,29 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>German Language | <%= title %> </title>
-        <link rel="stylesheet" href="/style.css" >
+        <!-- -------------------- Local Style ------------------> 
+        <link rel="stylesheet" href="/stylesheet/general.css" >
+        <link rel="stylesheet" href="/stylesheet/footer.css" >
+        <link rel="stylesheet" href="/stylesheet/content.css" >
+        <link rel="stylesheet" href="/stylesheet/form.css" >
+        <link rel="stylesheet" href="/stylesheet/header.css" >
+
+        <!-- -------------------- Google Fonts  " Roboto" font ------------------>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
     </head>
     <body>
         <header>
             <div class="site-title">
-                <img alt="Logo" >
-                <a href="/"><h1>Learning Deutsch</h1></a>
-                <p>A net for learning German language</p>
+                <div class="logo">
+                    <a href= "/" ><img alt="Logo" > </a>
+                </div>
+                <div class="title">
+                    <a href="/"><h1>Learning Deutsch</h1></a>
+                    <p>A net for learning German language</p>
+                </div>
             </div>
             <%- include('./navbar.ejs') %>
         </header>

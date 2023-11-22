@@ -2,12 +2,12 @@
     <ul>
         <% if (user) { %>
             <li><a href="/lessons">Lessons</a></li>
-            <li><a href="/users/profile">User Profile</a></li>
-            <li><a href="/users/logout">Logout</a></li>
             <% if (user.admin) { %>
                 <li><a href="/lessons/create">Create Lessons</a></li>
                 <li><a href="/lessons/create_quiz">Create Quizes</a></li>
             <% } %>
+            <li><a href="/users/profile">User Profile</a></li>
+            <li><a href="/users/logout">Logout</a></li>
         <% } else { %>
             <li><a href="/users/login">Login</a></li>
             <li><a href="/users/register">Register</a></li>
