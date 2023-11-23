@@ -1,7 +1,7 @@
 header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
     text-transform: uppercase;

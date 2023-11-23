@@ -2,7 +2,6 @@
 <main>
     <form action="/lessons/quiz/<%= lessonNo %>" method="post">
         <h2 class="question"> Lesson <%= lessonNo %> Quizes</h2>
-        <hr />
         <% if (quizes.length > 0) { %>
             <% quizes.forEach(quiz => { %>
                 
