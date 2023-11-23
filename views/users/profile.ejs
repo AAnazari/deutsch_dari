@@ -1,11 +1,13 @@
 <%- include('../partials/header.ejs') %>
-<div class="lesson content">
-    <h2>  User Profile</h2>
-    <p>Full Name: <%= user.firstname + ', ' + user.lastname %></p>
-    <p>Email Address: <%= user.email %></p>
-    <p>Gender: <%= user.gender %></p>
-</div>
-<div>
-    <button id="edit-profile" ><a href="setting/account" role="button">Profile Setting</a></button> 
-</div>
+<main>
+    <div>
+        <h2>  User Profile</h2>
+        <p>Full Name: <%= user.firstname + ', ' + user.lastname %></p>
+        <p>Email Address: <%= user.email %></p>
+        <p>Gender: <%= user.gender %></p>
+    </div>
+    <div>
+        <button id="edit-profile" ><a href="setting/account" role="button">Profile Setting</a></button> 
+    </div>
+</main>
 <%- include('../partials/footer.ejs') %>

@@ -1,40 +1,40 @@
 <%- include('../partials/header.ejs') %>
-<div class="form_content">
-    <form action="/users/register" method="post">
-        <div class="container">
-          <h1>Register</h1>
-          <hr>     
-          
-          <label for="lastname"><b>Lastname</b></label>
-          <input type="text" placeholder="Lastname" name="lastname" id="lastname" required>
+	<main>
+		<form action="/users/register" method="post">
+			<div class="container">
+			<h1>Register</h1>
+			<hr>     
+			
+			<label for="lastname"><b>Lastname</b></label>
+			<input type="text" placeholder="Lastname" name="lastname" id="lastname" required>
 
-          <label for="fisrtname"><b>Firstname</b></label>
-          <input type="text" placeholder="Firstname" name="firstname" id="firstname" required>
+			<label for="fisrtname"><b>Firstname</b></label>
+			<input type="text" placeholder="Firstname" name="firstname" id="firstname" required>
 
-          <label for="gender"><b>Gender</b></label>
-          <select name="gender" id="gender">
-            <option value="male">Male</option>
-            <option value="Female">Female</option>
-            <option value="other">Other</option>
-          </select>
-          
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Email" name="email" id="email" required>
-      
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Password" name="password" id="psw" required>
-      
-          <label for="repeat_password"><b>Repeat Password</b></label>
-          <input type="password" placeholder="Repeat Password" name="repeat_password" id="repeat_password" required>
-          <hr>
-      
-          <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-          <button type="submit" class="registerbtn">Register</button>
-        </div>
-      
-        <div class="container signin">
-          <p>Already have an account? <a href="/users/login">Sign in</a>.</p>
-        </div>
-      </form> 
-</div>
+			<label for="gender"><b>Gender</b></label>
+			<select name="gender" id="gender">
+				<option value="male">Male</option>
+				<option value="Female">Female</option>
+				<option value="other">Other</option>
+			</select>
+			
+			<label for="email"><b>Email</b></label>
+			<input type="text" placeholder="Email" name="email" id="email" required>
+		
+			<label for="psw"><b>Password</b></label>
+			<input type="password" placeholder="Password" name="password" id="psw" required>
+		
+			<label for="repeat_password"><b>Repeat Password</b></label>
+			<input type="password" placeholder="Repeat Password" name="repeat_password" id="repeat_password" required>
+			<hr>
+		
+			<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+			<button type="submit" class="registerbtn">Register</button>
+			</div>
+		
+			<div class="container signin">
+			<p>Already have an account? <a href="/users/login">Sign in</a>.</p>
+			</div>
+		</form> 
+	</main>
 <%- include('../partials/footer.ejs') %>
