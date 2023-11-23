@@ -8,13 +8,15 @@ footer {
 }
 
 footer .footer-nav {
-    flex-basis: 120px;
+    flex-basis: 90px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    margin-left: 20px;
-    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    border-top: 1px solid #ddd;
 }
 
 .footer-nav ul {
@@ -24,6 +26,7 @@ footer .footer-nav {
 .footer-nav ul li {
     list-style-type: none;
     padding-top: 5px;
+    padding-left: 15px;
 }
 
 .footer-nav ul li a:hover {

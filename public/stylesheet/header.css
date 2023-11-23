@@ -1,4 +1,4 @@
-header{
+header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 60px;
@@ -7,17 +7,17 @@ header{
     text-transform: uppercase;
 }
 
-header .site-title{
+header .site-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.title h1{
+.title h1 {
     font-size: 2.5em;
 }
 
-.title p, .title a, nav a{
+.title p, .title a, nav a {
     color: #777;
 }
 
@@ -26,22 +26,30 @@ header .site-title{
     margin-left: 5px;
 }
 
-nav ul{
+nav ul {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
-nav li{
+
+nav li {
     list-style-type: none;
     margin-left: 20px;
     display: inline-block;
 }
 
-nav li a:hover{
+nav li a:hover {
     font-size: 1.1em;
     font-weight: 700;
     color: #04AA6D;
     cursor: pointer;
+}
+
+header img {
+    height: 80px;
+    border-radius: 40px;
+    margin-top: 30px;
+    margin-right: 20px;
 }
