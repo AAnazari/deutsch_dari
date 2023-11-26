@@ -1,33 +1,31 @@
 <%- include('../partials/header.ejs') %>
-<main>
     <form action="/lessons/create_quiz" method="post">
         <div class="container">
-          <h1>Creating A Quiz For A Lesson</h1>
-          
-          <label for="lesson_nu"><b>Lesson Number</b></label>
-          <input type="text" placeholder="Lesson Number" name="lessonNo" id="lessonNo" required>
+			<h1>Creating A Quiz For A Lesson</h1>
+			
+			<label for="lesson_nu"><b>Lesson Number</b></label>
+			<input type="text" placeholder="Lesson Number" name="lessonNo" id="lessonNo" required>
 
-          <label for="quiz"><b>Quiz Number</b></label>
-          <input type="text" placeholder="Quiz Number" name="qnumber" id="qnumber" required>
-          
-          <label for="question"><b> Question </b></label>
-          <input type="text" placeholder="Question" name="question" id="question" required>
-      
-          <label for="option"><b> Multiple Choice Answer</b></label>
-          <input type="text" placeholder="Option A" name="options" id="a" required>
-          <input type="text" placeholder="Option B" name="options" id="b" required>
-          <input type="text" placeholder="Option C" name="options" id="c" required>
-          <input type="text" placeholder="Option D" name="options" id="d" required>
-      
-          <label for="answer"><b>Correct Answer</b></label>
-          <input type="text" placeholder="The correct answer" name="answer" id="answer" required>
-          <hr>
-          <button type="submit" class="create_quiz">Create Quiz</button>
+			<label for="quiz"><b>Quiz Number</b></label>
+			<input type="text" placeholder="Quiz Number" name="qnumber" id="qnumber" required>
+			
+			<label for="question"><b> Question </b></label>
+			<input type="text" placeholder="Question" name="question" id="question" required>
+		
+			<label for="option"><b> Multiple Choice Answer</b></label>
+			<input type="text" placeholder="Option A" name="options" id="a" required>
+			<input type="text" placeholder="Option B" name="options" id="b" required>
+			<input type="text" placeholder="Option C" name="options" id="c" required>
+			<input type="text" placeholder="Option D" name="options" id="d" required>
+		
+			<label for="answer"><b>Correct Answer</b></label>
+			<input type="text" placeholder="The correct answer" name="answer" id="answer" required>
+			<hr>
+			<button type="submit">Create Quiz</button>
         </div>
       
-        <div class="container signin">
-          <p>To creat a new lesson. <a href="/lessons/create">Create Lesson</a>.</p>
+        <div class="container lessonQuiz">
+        	<p>To creat a new lesson. <a href="/lessons/create">Create Lesson</a>.</p>
         </div>
-      </form> 
-    </main>
+    </form> 
 <%- include('../partials/footer.ejs') %>

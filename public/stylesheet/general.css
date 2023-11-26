@@ -12,3 +12,8 @@ p, h1, h2, h3, a, ul{
     color: #222;
 }
 
+main{
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    min-height: 400px;
+}

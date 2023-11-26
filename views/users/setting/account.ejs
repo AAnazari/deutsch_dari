@@ -1,20 +1,29 @@
 <%- include('../../partials/header.ejs') %>
-<main>
-  <form action="/users/setting/account" method="post">
-    <div class="container">
-      <h1>Profile Setting</h1>
-      <label for="lastname"><b>Lastname</b></label>
-      <input type="text" placeholder="Lastname" name="lastname" id="lastname" value="<%= user.lastname %>" required>
+	<main>
+		<div class="content">
+			<form action="/users/setting/account" method="post">
+				<div class="container">
+					<h1>Profile Setting</h1>
+					
+					<label for="lastname"><b>Lastname</b></label>
+					<input type="text" placeholder="Lastname" name="lastname" id="lastname" value="<%= user.lastname %>" required>
 
-      <label for="fisrtname"><b>Firstname</b></label>
-      <input type="text" placeholder="Firstname" name="firstname" id="firstname" value="<%= user.firstname %>" required>
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Email" name="email" id="email" value="<%= user.email %>" required>
-      <button type="submit" class="registerbtn">Save Changes</button>
-    </div>
-    <div class="container" style="background-color:#f1f1f1">
-      <span class="psw">Change your <a href="reset">password</a></span>
-    </div>
-  </form> 
-</main>
+					<label for="fisrtname"><b>Firstname</b></label>
+					<input type="text" placeholder="Firstname" name="firstname" id="firstname" value="<%= user.firstname %>" required>
+					<label for="email"><b>Email</b></label>
+					<input type="text" placeholder="Email" name="email" id="email" value="<%= user.email %>" required>
+					<button type="submit">Save Changes</button>
+				</div>
+				
+				<div class="container account">
+					<p>Change your <a href="reset">password</a></p>
+				</div>
+			</form>
+		</div> 
+		<aside>
+			<h1>ASIDE</h1>
+            <p>This is an Aside Part.</p>
+		</aside>
+	</main>
+
 <%- include('../../partials/footer.ejs') %>

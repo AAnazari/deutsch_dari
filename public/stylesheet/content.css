@@ -1,4 +1,52 @@
-main{
+main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+main h1 {
+    border-bottom: 1px solid #f1f1f1;
     padding-bottom: 10px;
-    margin-bottom: 0;
+}
+
+main p, main h3, main h4 {
+    padding: 10px;
+    margin: 5px;
+}
+
+main .content {
+    background-color: bisque;
+    flex-basis: 81%;
+    padding: 10px;
+}
+
+main .content #lessons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media screen and (max-width: 950px) {
+    main .content #lessons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main .content #lessons {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+main .content #lessons div {
+    margin: 15px;
+    border: 1px solid #f1f1f1;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+main aside {
+    background-color: azure;
+    flex-basis: 15.5%;
+    padding: 10px;
 }
