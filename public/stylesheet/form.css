@@ -59,7 +59,7 @@ form .container button:hover {
 form .lessonQuiz p, form .account p {
     background-color: #f1f1f1;
     text-align: center;
-    padding: 16px 26px 16px 26px;
+    padding: 16px 26px;
     margin-right: 5px;
 }
 

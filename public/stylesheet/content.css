@@ -15,9 +15,9 @@ main p, main h3, main h4 {
 }
 
 main .content {
-    background-color: bisque;
     flex-basis: 81%;
     padding: 10px;
+    position: relative;
 }
 
 main .content #lessons {
@@ -39,14 +39,53 @@ main .content #lessons {
 
 main .content #lessons div {
     margin: 15px;
-    border: 1px solid #f1f1f1;
+    border: 1px solid #a4a7a6;
     border-radius: 5px;
     padding: 5px;
 }
 
+main .content #lessons div:hover {
+    border: 1px solid #f1f1f1
+}
+
+main .content #lessons div:hover p, main .content #lessons div:hover h3, main .content #lessons div:hover h4 {
+    color: #04AA6D;
+}
+
 
 main aside {
-    background-color: azure;
     flex-basis: 15.5%;
     padding: 10px;
 }
+
+main .content #lessonContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+main .content #lessonContent .deutsch {
+}
+main .content #lessonContent .dari {
+    direction: rtl;
+}
+
+main .content #quiz {
+    position: absolute;
+    height: 40px;
+    bottom: 10px;
+    right: 20px;
+    font-size: 20px;
+    width: 10%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #04AA6D;
+    color: white;
+    opacity: 0.9;
+    transition: opacity 0.5s;
+}
+
+main .content #quiz:hover {
+    opacity: 1;
+}
+

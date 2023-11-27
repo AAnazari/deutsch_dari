@@ -1,14 +1,23 @@
 <%- include('../partials/header.ejs') %>
 <main>
     <div class="content">
-        <h2> Lesson <%= lesson.lessonNo %></h2>
-        <h3 class="title">Title: <%= lesson.title %></h3>
-        <div>
+        <h1> Lesson <%= lesson.lessonNo %></h1>
+        <h3><%= lesson.title %></h3>
+        <div id="lessonContent">
+            <div class="deutsch">
+                <h4>Deutsch</h4>
+                <p> <%= lesson.deutsch %></p>
+            </div>
+            <div class="dari">
+                <h4>دری</h4>
+                <p><%= lesson.dari %></p>
+            </div>
         </div>
-        <p class="deutsch"> Deutsch: <%= lesson.deutsch %></p>
-        <p class="dari"> Dari: <%= lesson.dari %></p>
-        <br /> <br /> <br /> <br /> <br /> <br />
-        <a class="quiz" href="/lessons/quiz/<%= lesson.lessonNo %>">Quiz</a>
+        <a href="/lessons/quiz/<%= lesson.lessonNo %>">
+            <button id="quiz">
+                Quiz
+            </button>
+        </a>
     </div> 
     <aside>
         <h1>ASIDE</h1>
