@@ -79,8 +79,9 @@ main .content #quiz {
     padding: 10px;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
     background-color: #04AA6D;
-    color: white;
+    color: white; 
     opacity: 0.9;
     transition: opacity 0.5s;
 }
@@ -89,3 +90,44 @@ main .content #quiz:hover {
     opacity: 1;
 }
 
+main .content .personalInfo  {
+    width: 60%;
+    margin: 10px auto;
+    border: 1px solid #f1f1f1;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+main .content .personalInfo table {
+    width: 90%;
+    margin-top: 20px;
+}
+
+main .content .personalInfo table td{
+    border-top: 1px solid #f1f1f1;
+    padding: 10px;
+    height: 50px;
+}
+
+main .content #edit {
+    width: 20%;
+    margin: 20px auto 0;
+}
+
+main .content #edit-profile {
+    vertical-align: center;
+    height: 40px;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #04AA6D;
+    color: white; 
+    opacity: 0.9;
+    transition: opacity 0.5s;
+}
+
+main .content #edit-profile:hover {
+    opacity: 1;
+}
