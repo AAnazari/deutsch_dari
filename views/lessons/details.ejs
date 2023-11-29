@@ -13,11 +13,13 @@
                 <p><%= lesson.dari %></p>
             </div>
         </div>
-        <a href="/lessons/quiz/<%= lesson.lessonNo %>">
-            <button id="quiz">
-                Quiz
-            </button>
-        </a>
+        <div id="quizButton">
+            <a href="/lessons/quiz/<%= lesson.lessonNo %>">
+                <button class="quizButton">
+                    Quiz
+                </button>
+            </a>
+        </div>
     </div> 
     <aside>
         <h1>ASIDE</h1>

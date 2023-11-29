@@ -17,7 +17,6 @@ main p, main h3, main h4 {
 main .content {
     flex-basis: 81%;
     padding: 10px;
-    position: relative;
 }
 
 main .content #lessons {
@@ -58,24 +57,37 @@ main aside {
     padding: 10px;
 }
 
-main .content #lessonContent {
+/* ////////////////////////////////  A lesson and Quizes Pages Styles //////////////////////////*/
+
+main .content #lessonContent,
+main .content .quizContent {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-main .content #lessonContent .deutsch {
+main .content #lessonContent .deutsch,
+main .content .quizContent .question {
 }
-main .content #lessonContent .dari {
+
+main .content #lessonContent .dari,
+main .content .quizContent .answer {
     direction: rtl;
 }
 
-main .content #quiz {
+main .content #checkButton,
+main .content #quizButton {
+    height: 60px;
+    position: relative;
+}
+
+main .content #checkButton button,
+main .content #quizButton button {
     position: absolute;
-    height: 40px;
     bottom: 10px;
-    right: 20px;
-    font-size: 20px;
+    right: 10px;
     width: 10%;
+    height: 40px;
+    font-size: 20px;
     padding: 10px;
     border: none;
     cursor: pointer;
@@ -86,9 +98,12 @@ main .content #quiz {
     transition: opacity 0.5s;
 }
 
-main .content #quiz:hover {
+main .content #checkButton button:hover,
+main .content #quizButton button:hover {
     opacity: 1;
 }
+
+/* ////////////////////////////////  User Profile Styles //////////////////////////*/
 
 main .content .personalInfo  {
     width: 60%;
@@ -131,3 +146,4 @@ main .content #edit-profile {
 main .content #edit-profile:hover {
     opacity: 1;
 }
+
