@@ -66,7 +66,6 @@ const quiz_get = async (req, res) => {
 const quizPost = async (req, res) => {
     try {
         let correctAnswer = 0;
-        const userAnswer = req.body.answer;
         const lessonNo = req.params.lessonNo;
         const lesson = await lessonM.Lesson.findOne({lessonNo});
 
@@ -78,6 +77,17 @@ const quizPost = async (req, res) => {
         });
 
         ////////////////////////////////compare quizes with user answers/////////////////////////
+        const userAnswer = req.body;
+        
+        for(let i = 0; i < quizes.length; i++){
+            if(quizes[i].answer === userAnswer["answer"+(i+1)]){
+                correctAnswer += 1;
+            }
+        }
+
+        /* ////////////////////////////// This for loop war for 'select options', now we changed the select option to Radio button options. ////////////////////////////////////
+        //const userAnswer = req.body.answer;
+
         for(let i = 0; i < quizes.length; i++){
             if(typeof userAnswer == "string" && quizes[i].answer === userAnswer){
                 correctAnswer += 1;
@@ -85,6 +95,7 @@ const quizPost = async (req, res) => {
                 correctAnswer += 1;
             }
         }
+        */
 
         ////////////////////////////////if the correct answers is greater than the half of the quiz number ///
         ///////////////////////// Then the user can continue to the next Lesson //////////////////

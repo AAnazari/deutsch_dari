@@ -11,12 +11,29 @@
                             <p><b>Question</b>: <%= quiz.question %></p>
                         </div>
                         <div class="answer">
-                            <select class="question" id="option" name="answer">
+                            <!-- <select class="question" id="option" name="answer">
                                 <option value="<%= quiz.options[0] %>"> <%= quiz.options[0] %> </option>
                                 <option value="<%= quiz.options[1] %>"> <%= quiz.options[1] %></option>
                                 <option value="<%= quiz.options[2] %>"> <%= quiz.options[2] %> </option>
                                 <option value="<%= quiz.options[3] %>"> <%= quiz.options[3] %></option>
                             </select>
+                        -->
+
+                            <% for(var i=0; i<quiz.options.length; i++) { %>
+                                <input type="radio" name="answer<%=quiz.qnumber%>" value="<%= quiz.options[i] %>">
+                                <label><%= quiz.options[i] %></label>
+                                <br />
+                            <% } %>
+                                                    
+                            <!-- <input type="radio" name="answer" value="<%= quiz.options[0] %>">
+                            <label><%= quiz.options[0] %></label>
+                             <input type="radio" name="answer" value="<%= quiz.options[1] %>">
+                            <label><%= quiz.options[1] %></label>
+                             <input type="radio" name="answer" value="<%= quiz.options[2] %>">
+                            <label><%= quiz.options[2] %></label>
+                             <input type="radio" name="answer" value="<%= quiz.options[3] %>">
+                            <label><%= quiz.options[3] %></label>
+                            -->
                         </div>
                     </div>
                     <hr />
