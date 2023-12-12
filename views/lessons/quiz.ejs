@@ -3,6 +3,8 @@
     <div class="content">
         <form action="/lessons/quiz/<%= lessonNo %>" method="post">
             <h1> Lesson <%= lessonNo %> Quizes</h1>
+            <%- include('../partials/flash_messages.ejs') %>
+
             <% if (quizes.length > 0) { %>
                 <% quizes.forEach(quiz => { %>
                     <h4>Quiz .<%= quiz.qnumber %></h4>

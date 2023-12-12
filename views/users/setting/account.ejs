@@ -4,7 +4,8 @@
 			<form action="/users/setting/account" method="post">
 				<div class="container">
 					<h1>Profile Setting</h1>
-					
+					<%- include('../../partials/flash_messages.ejs') %>
+
 					<label for="lastname"><b>Lastname</b></label>
 					<input type="text" placeholder="Lastname" name="lastname" id="lastname" value="<%= user.lastname %>" required>
 

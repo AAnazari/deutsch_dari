@@ -1,18 +1,18 @@
-body{
+body {
     max-width: 95%;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     margin: auto;
     font-weight: 400;
 }
 
-p, h1, h2, h3, a, ul{
+p, h1, h2, h3, a, ul {
     margin: 0;
     padding: 0;
     text-decoration: none;
     color: #222;
 }
 
-main{
+main {
     padding-bottom: 10px;
     margin-bottom: 0;
     min-height: 400px;

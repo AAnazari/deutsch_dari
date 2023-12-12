@@ -10,7 +10,7 @@ const lessons_get = async (req, res) => {
         const lessons = await lessonM.Lesson.find(); 
         res.render('lessons/lesson', {title : 'All lessons', lessons: lessons});
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 
@@ -27,7 +27,7 @@ const a_lesson_get = async (req, res) => {
         
         
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 
@@ -44,7 +44,7 @@ const create_lesson_post = async (req, res) => {
         res.redirect("/lessons/create_quiz");
         //lesson.save();
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 
@@ -59,7 +59,7 @@ const quiz_get = async (req, res) => {
         });
         res.render('lessons/quiz', {title : 'Quizes', lessonNo: req.params.lessonNo, quizes: quizes, lessonNO: req.params.lessonNo});
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 
@@ -109,18 +109,18 @@ const quizPost = async (req, res) => {
                 if(user.lesson_id.indexOf(nextLesson.id) === -1){
                     await userM.User.updateOne({email}, {$push: {lesson_id: nextLesson.id}});
                 }
-                req.flash('info', 'You have successfully finished the Lesson');
+                req.flash('success', 'You have successfully finished the Lesson');
                 req.flash('info', 'You can now start the next Lesson');
             } else {
-                req.flash('info', 'You have successfully finished All the Lessons');
+                req.flash('success', 'You have successfully finished All the Lessons');
             }
             res.redirect('/lessons');
         }else {
-            req.flash('Warning', 'You should learn more, and try again later');
+            req.flash('warning', 'You should learn more, and try again later');
             res.redirect("back");
         }
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 
@@ -133,7 +133,7 @@ const create_quiz_post = async (req, res) => {
         await lessonM.Lesson.updateOne({lessonNo: req.body.lessonNo}, {$push: {quiz: [req.body]}});
         res.redirect('/lessons');
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 

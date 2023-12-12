@@ -2,7 +2,8 @@
     <form action="/lessons/create_quiz" method="post">
         <div class="container">
 			<h1>Creating A Quiz For A Lesson</h1>
-			
+			<%- include('../partials/flash_messages.ejs') %>
+
 			<label for="lesson_nu"><b>Lesson Number</b></label>
 			<input type="text" placeholder="Lesson Number" name="lessonNo" id="lessonNo" required>
 

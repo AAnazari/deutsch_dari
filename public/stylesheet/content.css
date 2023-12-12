@@ -147,3 +147,38 @@ main .content #edit-profile:hover {
     opacity: 1;
 }
 
+/* ////////////////////////////////  Falsh Message Styles //////////////////////////*/
+
+.flash-messages {
+    width: 400px;
+    margin: 10px auto;
+}
+
+.flash-messages li {
+    list-style: none;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.flash-messages li.success {
+    color: white;
+    background-color: #04AA6D;
+}
+
+.flash-messages li.info {
+    color: white;
+    background-color: #0ec3dbdc;
+}
+
+.flash-messages li.error {
+    color: white;
+    background-color: red;
+}
+
+.flash-messages li.warning {
+    background-color: #faf750;
+}
+
+

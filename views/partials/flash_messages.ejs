@@ -1,9 +1,9 @@
 <% if (locals.messages) {%>
     <div>
-        <ul class="messages">
+        <ul class="flash-messages">
             <% Object.keys(messages).forEach((key) => { %> <%
                 messages[key].forEach((message) => { %> 
-                    <li class="<% key %>" > <%= message %></li>
+                    <li class="<%= key %>" > <%= message %></li>
                 <% }) %>
             <% }) %>
         </ul>

@@ -17,7 +17,7 @@ const editProfile_post = async (req, res) => {
     try {
         //////////////////////////////// Checking for existing Email Address //////////////////////////////////
         await userM.User.findOneAndUpdate({ _id: req.user._id }, { $set: req.body }, { new: false });
-        req.flash('info', 'Profile updated successfully');
+        req.flash('success', 'Profile updated successfully');
         res.redirect('/users/profile');
     } catch (error) {
         req.flash('error', error.message);
@@ -36,7 +36,7 @@ const updatePassPost = async (req, res) => {
             if(isMatch){
                 currentUser.password = value.password;
                 await currentUser.save();
-                req.flash('info', 'Password is changed successfully');
+                req.flash('success', 'Password is changed successfully');
                 res.redirect('/users/profile');
             }else{
                 req.flash('errer', "Invalid old password");

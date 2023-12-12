@@ -2,7 +2,8 @@
 	<form action="/lessons/create" method="post">
 		<div class="container">
 			<h1>Creating A New Lesson</h1>
-			
+			<%- include('../partials/flash_messages.ejs') %>
+
 			<label for="lesson"><b>Lesson Number</b></label>
 			<input type="text" placeholder="Lesson Number " name="lessonNo" id="lessonNo" required>
 

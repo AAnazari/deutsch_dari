@@ -2,7 +2,7 @@
 	<form action="/users/register" method="post">
 		<div class="container">
 			<h1>Register</h1>
-			
+			<%- include('./partials/flash_messages.ejs') %>
 			<label for="lastname"><b>Lastname</b></label>
 			<input type="text" placeholder="Lastname" name="lastname" id="lastname" required>
 
