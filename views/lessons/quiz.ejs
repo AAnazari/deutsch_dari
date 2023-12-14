@@ -1,26 +1,56 @@
 <%- include('../partials/header.ejs') %>
 <main>
-    <form action="/lessons/quiz/<%= lessonNo %>" method="post">
-        <h2 class="question"> Lesson <%= lessonNo %> Quizes</h2>
-        <% if (quizes.length > 0) { %>
-            <% quizes.forEach(quiz => { %>
-                
-                <p class="question">Q. <%= quiz.qnumber %></p>
-                <p class="question">Question: <%= quiz.question %></p>
-                <label for="answers"><b>Answer: </b></label>
-                <select class="question" id="option" name="answer">
-                    <option value="<%= quiz.options[0] %>"> <%= quiz.options[0] %> </option>
-                    <option value="<%= quiz.options[1] %>"> <%= quiz.options[1] %></option>
-                    <option value="<%= quiz.options[2] %>"> <%= quiz.options[2] %> </option>
-                    <option value="<%= quiz.options[3] %>"> <%= quiz.options[3] %></option>
-                </select>
-                
-                <hr />
-            <% }) %>
-            <button type="submit">Check</button>
-        <% } else { %>
-            <p>There is no Quiz to display. </p>
-        <% } %>
-    </form>
+    <div class="content">
+        <form action="/lessons/quiz/<%= lessonNo %>" method="post">
+            <h1> Lesson <%= lessonNo %> Quizes</h1>
+            <%- include('../partials/flash_messages.ejs') %>
+
+            <% if (quizes.length > 0) { %>
+                <% quizes.forEach(quiz => { %>
+                    <h4>Quiz .<%= quiz.qnumber %></h4>
+                    <div class="quizContent">
+                        <div class="question">
+                            <p><b>Question</b>: <%= quiz.question %></p>
+                        </div>
+                        <div class="answer">
+                            <!-- <select class="question" id="option" name="answer">
+                                <option value="<%= quiz.options[0] %>"> <%= quiz.options[0] %> </option>
+                                <option value="<%= quiz.options[1] %>"> <%= quiz.options[1] %></option>
+                                <option value="<%= quiz.options[2] %>"> <%= quiz.options[2] %> </option>
+                                <option value="<%= quiz.options[3] %>"> <%= quiz.options[3] %></option>
+                            </select>
+                        -->
+
+                            <% for(var i=0; i<quiz.options.length; i++) { %>
+                                <input type="radio" name="answer<%=quiz.qnumber%>" value="<%= quiz.options[i] %>">
+                                <label><%= quiz.options[i] %></label>
+                                <br />
+                            <% } %>
+                                                    
+                            <!-- <input type="radio" name="answer" value="<%= quiz.options[0] %>">
+                            <label><%= quiz.options[0] %></label>
+                             <input type="radio" name="answer" value="<%= quiz.options[1] %>">
+                            <label><%= quiz.options[1] %></label>
+                             <input type="radio" name="answer" value="<%= quiz.options[2] %>">
+                            <label><%= quiz.options[2] %></label>
+                             <input type="radio" name="answer" value="<%= quiz.options[3] %>">
+                            <label><%= quiz.options[3] %></label>
+                            -->
+                        </div>
+                    </div>
+                    <hr />
+                <% }) %>
+                <div id="checkButton">
+                    <button type="submit">Check</button>
+                </div>
+            <% } else { %>
+                <p>There is no Quiz to display. </p>
+            <% } %>
+        </form>
+    </div> 
+    <aside>
+        <h1>ASIDE</h1>
+        <p>This is an Aside Part.</p>
+    </aside>
 </main>
 <%- include('../partials/footer.ejs') %>

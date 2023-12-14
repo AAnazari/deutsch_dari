@@ -10,7 +10,7 @@ const lessons_get = async (req, res) => {
         const lessons = await lessonM.Lesson.find(); 
         res.render('lessons/lesson', {title : 'All lessons', lessons: lessons});
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 
@@ -27,7 +27,7 @@ const a_lesson_get = async (req, res) => {
         
         
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 
@@ -44,7 +44,7 @@ const create_lesson_post = async (req, res) => {
         res.redirect("/lessons/create_quiz");
         //lesson.save();
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 
@@ -59,14 +59,13 @@ const quiz_get = async (req, res) => {
         });
         res.render('lessons/quiz', {title : 'Quizes', lessonNo: req.params.lessonNo, quizes: quizes, lessonNO: req.params.lessonNo});
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 
 const quizPost = async (req, res) => {
     try {
         let correctAnswer = 0;
-        const userAnswer = req.body.answer;
         const lessonNo = req.params.lessonNo;
         const lesson = await lessonM.Lesson.findOne({lessonNo});
 
@@ -78,6 +77,17 @@ const quizPost = async (req, res) => {
         });
 
         ////////////////////////////////compare quizes with user answers/////////////////////////
+        const userAnswer = req.body;
+        
+        for(let i = 0; i < quizes.length; i++){
+            if(quizes[i].answer === userAnswer["answer"+(i+1)]){
+                correctAnswer += 1;
+            }
+        }
+
+        /* ////////////////////////////// This for loop war for 'select options', now we changed the select option to Radio button options. ////////////////////////////////////
+        //const userAnswer = req.body.answer;
+
         for(let i = 0; i < quizes.length; i++){
             if(typeof userAnswer == "string" && quizes[i].answer === userAnswer){
                 correctAnswer += 1;
@@ -85,6 +95,7 @@ const quizPost = async (req, res) => {
                 correctAnswer += 1;
             }
         }
+        */
 
         ////////////////////////////////if the correct answers is greater than the half of the quiz number ///
         ///////////////////////// Then the user can continue to the next Lesson //////////////////
@@ -98,18 +109,18 @@ const quizPost = async (req, res) => {
                 if(user.lesson_id.indexOf(nextLesson.id) === -1){
                     await userM.User.updateOne({email}, {$push: {lesson_id: nextLesson.id}});
                 }
-                req.flash('info', 'You have successfully finished the Lesson');
+                req.flash('success', 'You have successfully finished the Lesson');
                 req.flash('info', 'You can now start the next Lesson');
             } else {
-                req.flash('info', 'You have successfully finished All the Lessons');
+                req.flash('success', 'You have successfully finished All the Lessons');
             }
             res.redirect('/lessons');
         }else {
-            req.flash('Warning', 'You should learn more, and try again later');
+            req.flash('warning', 'You should learn more, and try again later');
             res.redirect("back");
         }
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 
@@ -122,7 +133,7 @@ const create_quiz_post = async (req, res) => {
         await lessonM.Lesson.updateOne({lessonNo: req.body.lessonNo}, {$push: {quiz: [req.body]}});
         res.redirect('/lessons');
     } catch (error) {
-        console.log(error);
+        req.flash('error', error.message);
     }
 };
 

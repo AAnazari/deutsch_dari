@@ -1,12 +1,31 @@
 <%- include('../partials/header.ejs') %>
 <main>
-    <h2> Lesson <%= lesson.lessonNo %></h2>
     <div class="content">
-        <h3 class="title">Title: <%= lesson.title %></h3>
-        <p class="deutsch"> Deutsch: <%= lesson.deutsch %></p>
-        <p class="dari"> Dari: <%= lesson.dari %></p>
-    </div>
-    <br /> <br /> <br /> <br /> <br /> <br />
-    <a class="quiz" href="/lessons/quiz/<%= lesson.lessonNo %>">Quiz</a>
+        <h1> Lesson <%= lesson.lessonNo %></h1>
+        <%- include('../partials/flash_messages.ejs') %>
+
+        <h3><%= lesson.title %></h3>
+        <div id="lessonContent">
+            <div class="deutsch">
+                <h4>Deutsch</h4>
+                <p> <%= lesson.deutsch %></p>
+            </div>
+            <div class="dari">
+                <h4>دری</h4>
+                <p><%= lesson.dari %></p>
+            </div>
+        </div>
+        <div id="quizButton">
+            <a href="/lessons/quiz/<%= lesson.lessonNo %>">
+                <button class="quizButton">
+                    Quiz
+                </button>
+            </a>
+        </div>
+    </div> 
+    <aside>
+        <h1>ASIDE</h1>
+        <p>This is an Aside Part.</p>
+    </aside>
 </main>
 <%- include('../partials/footer.ejs') %>

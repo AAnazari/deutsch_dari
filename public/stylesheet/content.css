@@ -1,4 +1,184 @@
-main{
-    padding-bottom: 10px;
-    margin-bottom: 0;
+main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
+
+main h1 {
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 10px;
+}
+
+main p, main h3, main h4 {
+    padding: 10px;
+    margin: 5px;
+}
+
+main .content {
+    flex-basis: 81%;
+    padding: 10px;
+}
+
+main .content #lessons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media screen and (max-width: 950px) {
+    main .content #lessons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main .content #lessons {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+main .content #lessons div {
+    margin: 15px;
+    border: 1px solid #a4a7a6;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+main .content #lessons div:hover {
+    border: 1px solid #f1f1f1
+}
+
+main .content #lessons div:hover p, main .content #lessons div:hover h3, main .content #lessons div:hover h4 {
+    color: #04AA6D;
+}
+
+
+main aside {
+    flex-basis: 15.5%;
+    padding: 10px;
+}
+
+/* ////////////////////////////////  A lesson and Quizes Pages Styles //////////////////////////*/
+
+main .content #lessonContent,
+main .content .quizContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+main .content #lessonContent .deutsch,
+main .content .quizContent .question {
+}
+
+main .content #lessonContent .dari,
+main .content .quizContent .answer {
+    direction: rtl;
+}
+
+main .content #checkButton,
+main .content #quizButton {
+    height: 60px;
+    position: relative;
+}
+
+main .content #checkButton button,
+main .content #quizButton button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 10%;
+    height: 40px;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #04AA6D;
+    color: white; 
+    opacity: 0.9;
+    transition: opacity 0.5s;
+}
+
+main .content #checkButton button:hover,
+main .content #quizButton button:hover {
+    opacity: 1;
+}
+
+/* ////////////////////////////////  User Profile Styles //////////////////////////*/
+
+main .content .personalInfo  {
+    width: 60%;
+    margin: 10px auto;
+    border: 1px solid #f1f1f1;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+main .content .personalInfo table {
+    width: 90%;
+    margin-top: 20px;
+}
+
+main .content .personalInfo table td{
+    border-top: 1px solid #f1f1f1;
+    padding: 10px;
+    height: 50px;
+}
+
+main .content #edit {
+    width: 20%;
+    margin: 20px auto 0;
+}
+
+main .content #edit-profile {
+    vertical-align: center;
+    height: 40px;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #04AA6D;
+    color: white; 
+    opacity: 0.9;
+    transition: opacity 0.5s;
+}
+
+main .content #edit-profile:hover {
+    opacity: 1;
+}
+
+/* ////////////////////////////////  Falsh Message Styles //////////////////////////*/
+
+.flash-messages {
+    width: 400px;
+    margin: 10px auto;
+}
+
+.flash-messages li {
+    list-style: none;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.flash-messages li.success {
+    color: white;
+    background-color: #04AA6D;
+}
+
+.flash-messages li.info {
+    color: white;
+    background-color: #0ec3dbdc;
+}
+
+.flash-messages li.error {
+    color: white;
+    background-color: red;
+}
+
+.flash-messages li.warning {
+    background-color: #faf750;
+}
+
+
