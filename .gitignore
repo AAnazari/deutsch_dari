@@ -1,0 +1,2 @@
+# Ignoring / Removing the node_modules form git tracking
+node_modules
