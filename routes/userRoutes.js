@@ -1,7 +1,7 @@
 const express = require('express');
 const userController = require('../controllers/userController');
 const userRoute = express.Router();
-const {ensureAuthenticated, ensureNotAuthenticated} = require('../middlewares/functions');
+const {ensureAuthenticated, ensureNotAuthenticated, checkRole} = require('../middlewares/functions');
 
 ///////////////////////////////////// Profile get route //////////////////////////////////
 userRoute.get('/profile',ensureAuthenticated, userController.profile_get);
@@ -25,5 +25,8 @@ userRoute.post('/login', userController.login_post);
 
 ///////////////////////////////////// Logout get and post routes //////////////////////////////////
 userRoute.get('/logout', ensureAuthenticated, userController.logout);
+
+///////////////////////////////////// Users Managing get and post routes //////////////////////////////////
+userRoute.get('/', ensureAuthenticated, checkRole, userController.usersGet);
 
 module.exports = userRoute;

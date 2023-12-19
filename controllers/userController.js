@@ -4,15 +4,17 @@ const passport = require('passport');
 require('../utils/auth');
 
 
-
+///////////////////////////////////// Showing the User Profile to the specified User get controller //////////////////////////////////
 const profile_get = (req, res) => {
     res.render('users/profile', {title: 'User Profile'});
 };
 
+///////////////////////////////////// Edit User Profile get controller //////////////////////////////////
 const editProfile_get = (req, res) => {
     res.render('users/setting/account', {title: 'Edit Profile'});
 };
 
+///////////////////////////////////// Edit User Profile Post controller //////////////////////////////////
 const editProfile_post = async (req, res) => {
     try {
         //////////////////////////////// Checking for existing Email Address //////////////////////////////////
@@ -24,9 +26,12 @@ const editProfile_post = async (req, res) => {
     }
 };
 
+///////////////////////////////////// Reset Password get controller //////////////////////////////////
 const updatePassGet = (req, res) => {
     res.render('users/setting/reset', {title: 'Change Password'});
 };
+
+///////////////////////////////////// Reset Password Post controller //////////////////////////////////
 const updatePassPost = async (req, res) => {
     try {
         const {error, value} = updatePassValidator(req.body);
@@ -52,11 +57,12 @@ const updatePassPost = async (req, res) => {
     
 };
 
-
+///////////////////////////////////// User Register get controller //////////////////////////////////
 const register_get = (req, res) => {
     res.render('users/register', {title: 'Registration'});
 };
 
+///////////////////////////////////// User Register Post controller //////////////////////////////////
 const register_post = async (req, res) => {
     try {
         //////////////////////////////// Checking for existing Email Address //////////////////////////////////
@@ -82,10 +88,12 @@ const register_post = async (req, res) => {
     }
 };
 
+///////////////////////////////////// User Login get controller //////////////////////////////////
 const login_get = (req, res) => {
     res.render('users/login', {title: 'Login'});
 };
 
+///////////////////////////////////// User Login Post controller //////////////////////////////////
 const login_post = (req,res) => {
     const { email, password } = req.body;
     //Required
@@ -127,6 +135,7 @@ const login_post = (req,res) => {
 /////////////////////////*/
 };
 
+///////////////////////////////////// User Logout controller //////////////////////////////////
 const logout = (req, res, next) => {
     req.logout(function(err) {
         if (err) { 
@@ -137,6 +146,19 @@ const logout = (req, res, next) => {
         res.redirect('/users/login');
       });
 };
+
+///////////////////////////////////// User Managing get controller //////////////////////////////////
+const usersGet = async (req, res) => {
+    try {
+        const users = await userM.User.find();
+        res.render('users/users', {title: 'Managing Users', users: users});
+        console.log(users);
+    } catch (error) {
+        req.flash('error', error.message);
+    }
+
+}
+
 module.exports = {
     profile_get,
     editProfile_get,
@@ -147,5 +169,6 @@ module.exports = {
     register_post,
     login_get,
     login_post,
-    logout
+    logout,
+    usersGet
 };

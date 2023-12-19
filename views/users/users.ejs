@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs') %>
+<main>
+    <div class="content">
+        <h1>  Users Setting</h1>
+        <%- include('../partials/flash_messages.ejs') %>
+        <table>
+            <tr>
+                <th> Full Name </th>
+                <th> Gender </th>
+                <th> Email </th>
+                <th> Admin </th>
+            </tr>
+            <% if (users.length > 0) { %>
+                <% users.forEach( (user) =>{ %>
+                    <tr>
+                        <td> <%= user.firstname + ', ' + user.lastname %>  </td>
+                        <td> <%= user.gender %> </td>
+                        <td> <%= user.email %> </td>
+                        <td> <%= user.admin ? 'Yes' : 'No' %> </td>
+                        <td> <button> Edit</button> <button>Deactive</button> <button>Delete</button></td>
+                    </tr>
+                <% } ) %>
+            <% } %>
+        </table>        
+    </div>
+    <aside>
+        <h1>ASIDE</h1>
+        <p>This is an Aside Part.</p>
+    </aside>
+</main>
+<%- include('../partials/footer.ejs') %>
