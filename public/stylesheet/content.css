@@ -181,4 +181,45 @@ main .content #edit-profile:hover {
     background-color: #faf750;
 }
 
+/* ////////////////////////////////  User Manage Styles //////////////////////////*/
+table#manage-user {
+    margin: 20px auto;
+    padding: 10px;
+    width: 90%;
+    text-align: left;
+    border: solid 1px #f1f1f1;
+    border-radius: 10px;
+}
+
+table#manage-user thead {
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+table#manage-user td, table#manage-user th {
+    border-bottom: 1px solid #f1f1f1;
+    padding: 10px;
+    height: 50px;
+}
+
+table#manage-user button {
+    height: 40px;
+    width: 80px;
+    border: none;
+    background-color: rgb(241, 241, 241);
+    color: #030303;
+    font-size: 1.001em;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+table#manage-user button:hover {
+    background-color: #04AA6D;
+    color: #ffffff;
+    font-size: 1.001em;
+    font-weight: 700;
+}
+
+
+
 

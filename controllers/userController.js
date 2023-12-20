@@ -151,7 +151,7 @@ const logout = (req, res, next) => {
 const usersGet = async (req, res) => {
     try {
         const users = await userM.User.find();
-        res.render('users/users', {title: 'Managing Users', users: users});
+        res.render('users/manageUser', {title: 'Managing Users', users: users});
         console.log(users);
     } catch (error) {
         req.flash('error', error.message);
