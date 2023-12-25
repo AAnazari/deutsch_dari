@@ -152,7 +152,6 @@ const usersGet = async (req, res) => {
     try {
         const users = await userM.User.find();
         res.render('users/manageUser', {title: 'Managing Users', users: users});
-        console.log(users);
     } catch (error) {
         req.flash('error', error.message);
     }
