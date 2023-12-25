@@ -183,23 +183,35 @@ main .content #edit-profile:hover {
 
 /* ////////////////////////////////  User Manage Styles //////////////////////////*/
 table#manage-user {
+    border-collapse: collapse;
     margin: 20px auto;
     padding: 10px;
     width: 90%;
     text-align: left;
-    border: solid 1px #f1f1f1;
-    border-radius: 10px;
 }
 
 table#manage-user thead {
+    background-color: #04AA6D;
+    color: #ffffff;
     font-size: 1.1em;
     font-weight: 700;
 }
 
 table#manage-user td, table#manage-user th {
-    border-bottom: 1px solid #f1f1f1;
     padding: 10px;
-    height: 50px;
+    height: 40px;
+}
+
+table#manage-user td {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+table#manage-user th:first-child {
+    border-radius: 10px 0 0 10px;
+}
+  
+table#manage-user th:last-child {
+    border-radius: 0 10px 10px 0;
 }
 
 table#manage-user button {

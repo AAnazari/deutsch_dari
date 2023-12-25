@@ -22,8 +22,15 @@
                             <td> <%= user.firstname + ', ' + user.lastname %>  </td>
                             <td> <%= user.gender %> </td>
                             <td> <%= user.email %> </td>
-                            <td> <%= user.admin ? 'Yes' : 'No' %> </td>
-                            <td> <button> Update </button> <button>Deactive</button></td>
+                            <form action = 'users/setting/update_role' method="post">
+                                <td>
+                                    <input type="hidden" name="id" value="<%= user.id %>" />
+                                    <select name="admin" id="admin">
+                                        <option value="Yes" <%= user.admin ? 'selected' : '' %> > Yes </option>
+                                        <option value="No" <%= !user.admin ? 'selected' : '' %> >No</option>
+                                    </select> </td>
+                                <td> <button> Update </button> <!-- <button>Deactive</button> --> </td>
+                            </form>
                         </tr>
                     <% } ) %>
                 <% } %>

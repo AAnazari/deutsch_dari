@@ -155,8 +155,41 @@ const usersGet = async (req, res) => {
     } catch (error) {
         req.flash('error', error.message);
     }
+};
 
-}
+const usersPost = async (req, res) => {
+    try {
+        let {id, admin} = req.body;
+
+        // Checking that the id and admin are valid
+        if (!id || !admin) {
+            req.flash('error', "invalid Request");
+            return res.redirect("back");
+        }
+
+        // Admin User can not remove itself from the admin
+        if (req.user.id === id) {
+            req.flash('error', "Admin User can not remove itself from the admin, Ask another admin to remove it");
+            return res.redirect("back");
+        }
+
+        // chenging 'Yes' and 'No' string responses by user to boolean true and false
+         if (admin === 'Yes'){
+            admin = true;
+         } else if (admin === 'No'){
+            admin = false;
+         }
+
+        // Update the User Role to admin / remove it from the admin list
+        const user = await userM.User.findByIdAndUpdate(id, {admin}, {new:true, runValidators:true});
+        req.flash('info', "Updated user role");
+        res.redirect("back");
+    } catch (error) {
+        req.flash('error', error.message);
+    }
+};
+
+
 
 module.exports = {
     profile_get,
@@ -169,5 +202,6 @@ module.exports = {
     login_get,
     login_post,
     logout,
-    usersGet
+    usersGet,
+    usersPost
 };

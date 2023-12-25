@@ -26,7 +26,10 @@ userRoute.post('/login', userController.login_post);
 ///////////////////////////////////// Logout get and post routes //////////////////////////////////
 userRoute.get('/logout', ensureAuthenticated, userController.logout);
 
-///////////////////////////////////// Users Managing get and post routes //////////////////////////////////
+///////////////////////////////////// Users Managing get route //////////////////////////////////
 userRoute.get('/', ensureAuthenticated, checkRole, userController.usersGet);
+
+///////////////////////////////////// Users Managing (Update Admin) post route //////////////////////////////////
+userRoute.post('/setting/update_role', ensureAuthenticated, checkRole, userController.usersPost);
 
 module.exports = userRoute;
